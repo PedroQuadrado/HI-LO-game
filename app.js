@@ -3,6 +3,7 @@ const lastCard = document.getElementById("lastCard");
 const status = document.getElementById("status");
 const wins = document.getElementById("wins");
 let winCount = 0;
+let lossCount = 1;
 
 function loadCard() {
   randomCard = Math.floor(Math.random() * 13 + 2);
@@ -78,7 +79,7 @@ function nCard() {
     default:
       break;
   }
-  console.log(randomCardNumber, newCardNumber);
+  // console.log(randomCardNumber, newCardNumber);
 
   if (option == "h" && newCardNumber > randomCardNumber) {
     status.innerHTML = "YOU WIN";
@@ -93,6 +94,7 @@ function nCard() {
     clear();
   } else {
     status.innerHTML = "YOU LOSE";
+    lossCount++;
     clear();
   }
 }
@@ -103,7 +105,7 @@ function clear() {
   randomCard = newCard;
   randomSuit = newSuit;
   randomCardNumber = newCardNumber;
-  wins.innerText = winCount;
+  wins.innerText = (winCount / lossCount).toFixed(2);
 }
 function hiOption() {
   option = "h";
